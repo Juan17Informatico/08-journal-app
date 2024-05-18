@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom"; 
 import { Button, Grid, Link, TextField, Typography } from "@mui/material"; 
@@ -19,6 +20,8 @@ export const LoginPage = () => {
     email: 'juan123@gmail.com',
     password: '123', 
   });
+
+  const isAuthenticating = useMemo( () => status === 'checking', [status]);
 
   const onSubimit = (event) => {
     event.preventDefault();
@@ -64,12 +67,18 @@ export const LoginPage = () => {
 
             <Grid container spacing={ 2 } sx={ {mb: 2, marginTop: 1} }>
                 <Grid item xs={ 12 } sm={ 6 }>
-                  <Button type="submit" variant='contained' fullWidth >
+                  <Button 
+                    disabled={isAuthenticating}
+                    type="submit" 
+                    variant='contained' 
+                    fullWidth 
+                  >
                     Login
                   </Button>
                 </Grid> 
                 <Grid item xs={ 12 } sm={ 6 }>
                   <Button 
+                    disabled={isAuthenticating}
                     onClick={onGoogleSignIn}
                     variant='contained' 
                     fullWidth 
