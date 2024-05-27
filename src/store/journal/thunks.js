@@ -1,6 +1,7 @@
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FireBaseDB } from "../../firebase/config";
-import { addNewEmptyNote, savingNewNote, setActiveNote } from "./journalSlice";
+import { addNewEmptyNote, savingNewNote, setActiveNote, setNotes } from "./journalSlice";
+import { loadNotes } from "../../helpers";
 
 
 export const startNewNote = () => {
@@ -28,4 +29,17 @@ export const startNewNote = () => {
         //
 
     }
+}
+
+export const startLoadingNotes = () => {
+
+    return async( dispatch, getState ) => {
+        const { uid } = getState().auth;
+        if ( !uid ) throw new Error('El UID del usuario no exite'); 
+
+        const notes = await loadNotes( uid );
+
+        dispatch( setNotes(notes) ); 
+    }
+
 }
