@@ -1,4 +1,6 @@
+import { loginWithEmailPassword } from "../../../src/firebase/providers";
 import { authSlice, checkingCredentials, login, logout } from "../../../src/store/auth/authSlice";
+import { startLoginWithEmailPassword } from "../../../src/store/auth/thunks";
 import { authenticatedState, demoUser, initialState } from "../../fixtures/authFixtures";
 
 
@@ -63,5 +65,6 @@ describe('Pruebas en el authSlice', () => {
     
         expect( state.status ).toBe('checking');
     });
+
 
 });
