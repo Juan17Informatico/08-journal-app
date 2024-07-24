@@ -45,4 +45,4 @@ describe('Pruebas en Journal Thunks', () => {
         await Promise.all(deletePromises);
     }); 
 
-});g
+});
