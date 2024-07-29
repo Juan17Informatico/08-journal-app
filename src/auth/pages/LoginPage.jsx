@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
-import { Alert, Button, Grid, Link, TextField, Typography } from "@mui/material";
-import { Google } from "@mui/icons-material";
+import iconsImport from "./iconsImport";
+
 
 import { AuthLayout } from "../layout/index";
 
@@ -13,6 +13,7 @@ const formData = {
     email: "",
     password: "",
 }
+const {Google, Alert, Button, Grid, Link, TextField, Typography} = iconsImport;
 
 export const LoginPage = () => {
     const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export const LoginPage = () => {
 
     return (
         <AuthLayout title="Login">
-            <h1>hola mundo: {import.meta.env.VITE_HOLA}</h1>
+            {/* <h1>hola mundo: {import.meta.env.VITE_HOLA}</h1> */}
             <form 
                 className="animate__animated animate__fadeIn animate__faster"
                 onSubmit={onSubimit}
