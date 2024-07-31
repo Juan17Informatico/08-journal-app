@@ -38,6 +38,7 @@ export const LoginPage = () => {
         <AuthLayout title="Login">
             {/* <h1>hola mundo: {import.meta.env.VITE_HOLA}</h1> */}
             <form 
+                aria-label="submit-form"
                 className="animate__animated animate__fadeIn animate__faster"
                 onSubmit={onSubimit}
             >
@@ -61,6 +62,9 @@ export const LoginPage = () => {
                             placeholder="Contraseña"
                             fullWidth
                             name="password"
+                            inputProps={{
+                                'data-testid': 'password'
+                            }}
                             value={password}
                             onChange={onInputChange}
                         />
